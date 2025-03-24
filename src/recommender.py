@@ -1,34 +1,35 @@
-import pandas as pd
 import numpy as np
+import pandas as pd
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.metrics.pairwise import cosine_similarity
+import os
 
-# Load data
-df = pd.read_csv("notebooks/processed_movies.csv")
-cosine_sim = np.load("notebooks/cosine_similarity.npy")
+# Load processed data
+data_path = "notebooks/processed_movies.csv"
+similarity_path = "notebooks/cosine_similarity.npy"
 
-# Function to get recommendations
+df = pd.read_csv(data_path)
+
+# Ensure cosine similarity matrix exists or recompute if necessary
+if os.path.exists(similarity_path):
+    cosine_sim = np.load(similarity_path)
+else:
+    tfidf = TfidfVectorizer(stop_words='english')
+    tfidf_matrix = tfidf.fit_transform(df['Overview'].fillna(""))
+    cosine_sim = cosine_similarity(tfidf_matrix, tfidf_matrix)
+    np.save(similarity_path, cosine_sim)
+
 def get_recommendations(title, num_recommendations=5):
     if title not in df['Title'].values:
         return []
-
-    # Get index of the movie
+    
     idx = df[df['Title'] == title].index[0]
-
-    # Get similarity scores
     sim_scores = list(enumerate(cosine_sim[idx]))
-    sim_scores = sorted(sim_scores, key=lambda x: x[1], reverse=True)[1:num_recommendations+1]  # Exclude itself
-
-    # Get movie titles & poster URLs
+    sim_scores = sorted(sim_scores, key=lambda x: x[1], reverse=True)
+    sim_scores = sim_scores[1:num_recommendations + 1]  # Exclude itself
+    
     movie_indices = [i[0] for i in sim_scores]
+    recommendations = df.iloc[movie_indices][['Title', 'Poster_Url', 'Release_Date']]
+    recommendations['Release_Year'] = pd.to_datetime(recommendations['Release_Date'], errors='coerce').dt.year.fillna('Unknown').astype(str)
     
-    recommendations = []
-    for i in movie_indices:
-        movie_name = df.iloc[i]['Title']
-        poster_url = df.iloc[i]['Poster_Url']  # Assuming column name is Poster_Url
-        
-        # Extract the year from Release_Date column
-        release_date = df.iloc[i]['Release_Date']
-        release_year = pd.to_datetime(release_date, errors='coerce').year if pd.notna(release_date) else "N/A"
-        
-        recommendations.append((movie_name, poster_url, release_year))
-    
-    return recommendations
+    return list(zip(recommendations['Title'], recommendations['Poster_Url'], recommendations['Release_Year']))
