@@ -13,7 +13,7 @@ st.set_page_config(page_title="MovieSphere - Movie Recommender", layout="wide")
 # Header Banner
 left, centre, right = st.columns(3)
 with centre:
-    st.image("src\logo.png")
+    st.image("src\\logo.png")
 
 st.markdown("""
     <h1 style='text-align: center; font-size: 50px; font-weight: bold;'>🎬 MovieSphere</h1>
