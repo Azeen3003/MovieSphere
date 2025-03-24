@@ -44,7 +44,7 @@ streamlit run app.py
 4. **Recommendation**: The app finds and displays 5 similar movies along with posters and release years.
 
 ## 🌐 Demo
-🚀 **Live Deployment**: *(Coming Soon!)*
+🚀 **Live Deployment**: [here](https://moviesphere-az.streamlit.app/)
 
 ## 📸 Screenshots
 tba
