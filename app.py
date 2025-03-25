@@ -16,9 +16,11 @@ with centre:
     st.image("src/logo.png")
 
 st.markdown("""
-    <h2 style='text-align: center; font-size: 50px; font-weight: bold;'>MovieSphere</2>
-    <p style='text-align: center; font-size: 18px;'>Find Your Next Favorite Movie!</p>
-    """, unsafe_allow_html=True)
+            <div style='text-align: center;>
+                <h2>MovieSphere</2>
+                <p  font-size: 18px;'>Find Your Next Favorite Movie!</p>
+            </div>
+            """, unsafe_allow_html=True)
 
 # Auto-suggest movie title
 def movie_search():
