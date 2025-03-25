@@ -17,8 +17,10 @@ with centre:
 
 st.markdown("""
             <div style="text-align: center;">
-                <h2>MovieSphere</h2>
-                <p style="font-size: 18px;">Find Your Next Favorite Movie!</p>
+                <h2>🎬 Welcome to MovieSphere! 🍿</h2>
+                <h4>Your ultimate movie recommendation engine!</h4>
+                <p style="fonr-size: 18px;">🔍 Search for a movie and get personalized recommendations instantly!</p>
+                <p style="fonr-size: 18px;"> ✨ Discover new favorites based on what you love.</p>
             </div>
             """, unsafe_allow_html=True)
 
