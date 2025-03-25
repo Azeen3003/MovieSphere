@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import time
-from src.recommender import get_recommendations  # Import function from utils.py
+from src.recommender import get_recommendations  
 
 # Load processed data
 df = pd.read_csv("notebooks/processed_movies.csv")
@@ -16,9 +16,9 @@ with centre:
     st.image("src/logo.png")
 
 st.markdown("""
-            <div style='text-align: center;>
+            <div style="text-align: center;">
                 <h2>MovieSphere</h2>
-                <p style='font-size: 18px;'>Find Your Next Favorite Movie!</p>
+                <p style="font-size: 18px;">Find Your Next Favorite Movie!</p>
             </div>
             """, unsafe_allow_html=True)
 
