@@ -16,8 +16,8 @@ with centre:
     st.image("src/logo.png")
 
 st.markdown("""
-    <h1 style='text-align: center; font-size: 50px; font-weight: bold;'>🎬 MovieSphere</h1>
-    <h3 style='text-align: center;'>Find Your Next Favorite Movie!</h3>
+    <h2 style='text-align: center; font-size: 50px; font-weight: bold;'>MovieSphere</2>
+    <p style='text-align: center; font-size: 18px;'>Find Your Next Favorite Movie!</p>
     """, unsafe_allow_html=True)
 
 # Auto-suggest movie title
