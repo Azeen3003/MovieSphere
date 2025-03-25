@@ -17,8 +17,8 @@ with centre:
 
 st.markdown("""
             <div style='text-align: center;>
-                <h2>MovieSphere</2>
-                <p  font-size: 18px;'>Find Your Next Favorite Movie!</p>
+                <h2>MovieSphere</h2>
+                <p style='font-size: 18px;'>Find Your Next Favorite Movie!</p>
             </div>
             """, unsafe_allow_html=True)
 
